@@ -32,11 +32,25 @@ function get_units_site(){
     }
 }
 
-add_shortcode('sites_from_db', 'get_sites_from_db');
+add_shortcode('all_sites', 'get_sites_from_db');
 function get_sites_from_db(){
     $sql = "SELECT * FROM Sites";
     $result = run_query_on_mysql($sql);
-    return $result;
+    if (empty($site)){
+        echo "No site found";
+        return;
+    }else{
+        $sql = "SELECT * FROM Sites";
+        $result = run_query_on_mysql($sql);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo "id: " . $row["s_id"]. " - Name: " . $row["s_name"]." ".$row["s_location"]."<br>";
+            }
+        } else {
+            echo "No results found";
+        }
+        return $result;
+    }
 }
 
 function run_query_on_mysql($sql){
