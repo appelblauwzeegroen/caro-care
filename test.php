@@ -40,8 +40,6 @@ add_shortcode('all_sites', 'get_sites_from_db');
 function get_sites_from_db(){
     $sql = "SELECT * FROM Sites";
     $result = run_query_on_mysql($sql);
-    $sql = "SELECT * FROM Sites";
-    $result = run_query_on_mysql($sql);
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             echo "id: " . $row["s_id"]. " - Name: " . $row["s_name"]." ".$row["s_location"]."<br>";
