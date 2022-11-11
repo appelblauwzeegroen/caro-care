@@ -14,6 +14,20 @@ add_shortcode( 'units_waregem', 'get_units_site_waregem' );
 function get_units_site_waregem(){
     $sql = "SELECT * FROM Rooms WHERE r_s_id = '20'";
     $result = run_query_on_mysql($sql);
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            echo "id: " . $row["r_id"]. " - Name: " . $row["r_label"]. "<br>";
+        }
+    } else {
+        echo "0 results";
+    }
+    return $result;
+}
+
+add_shortcode('sites_from_db', 'get_sites_from_db');
+function get_sites_from_db(){
+    $sql = "SELECT * FROM Sites";
+    $result = run_query_on_mysql($sql);
     return $result;
 }
 
@@ -27,13 +41,7 @@ function run_query_on_mysql($sql){
         die("Connection failed: " . $conn->connect_error);
     }
     $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            echo "id: " . $row["r_id"]. " - Name: " . $row["r_label"]. "<br>";
-        }
-    } else {
-        echo "0 results";
-    }
+    return $result;
     $conn->close();
 }
 
