@@ -43,7 +43,15 @@ function get_sites_from_db(){
     $result = run_query_on_mysql($sql);
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            echo "id: " . $row["s_id"]. " - Name: " . $row["s_name"]." ".$row["s_location"]."<br>";
+            $server = $_SERVER['SERVER_NAME'];
+            $siteUrl = "http://$server/site/?s=" . $row["s_id"];
+            $card_list_item = $card_list_item."<li class='card-list-item'> <a href='".$siteUrl."'><div class='card'><div class='card-image'><img alt= '' class='logos' src='";
+			$card_list_item = $card_list_item.$row["s_image_url"];
+			$card_list_item = $card_list_item."' data-image></div><div class='card-content'><h3 class='card-heading'>";
+			$card_list_item = $card_list_item.$row["s_name"];
+			$card_list_item = $card_list_item."</h3><article>";
+			$card_list_item = $card_list_item."<i class='fa-solid fa-location-dot'></i> ".$row["s_location"];
+			$card_list_item = $card_list_item."</article></div></div></a></li>";
         }
     } else {
         echo "No results found";
