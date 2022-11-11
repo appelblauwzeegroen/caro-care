@@ -13,20 +13,23 @@
 add_shortcode( 'units_site', 'get_units_site');
 function get_units_site(){
     $site=$_GET['site'];
-    //if $site is empty, show error message: "No site selected"
+    //if $site is empty, show error message: "No site selected" and stop function
+
     if (empty($site)){
         echo "No site selected";
-    }
-    $sql = "SELECT * FROM Rooms WHERE r_s_id = '20'";
-    $result = run_query_on_mysql($sql);
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            echo "id: " . $row["r_id"]. " - Name: " . $row["r_label"]. "<br>";
+        return;
+    }else{
+        $sql = "SELECT * FROM Rooms WHERE r_s_id = '20'";
+        $result = run_query_on_mysql($sql);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo "id: " . $row["r_id"]. " - Name: " . $row["r_label"]. "<br>";
+            }
+        } else {
+            echo "0 results";
         }
-    } else {
-        echo "0 results";
+        return $result;
     }
-    return $result;
 }
 
 add_shortcode('sites_from_db', 'get_sites_from_db');
