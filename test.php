@@ -55,7 +55,7 @@ function get_sites_from_db(){
             }else{
                 $imagelink = $row["s_image_url"];
             }
-            $siteUrl = "http://".$server."/sitedetails/?s=" . $row["s_id"];
+            $siteUrl = "http://".$server."/sitedetails/?sid=" . $row["s_id"];
             $card_list_item = $card_list_item."<li class='card-list-item'> <a href='".$siteUrl."'><div class='card'><div class='card-image'><img alt= '' class='logos' src='";
 			$card_list_item = $card_list_item.$imagelink;
 			$card_list_item = $card_list_item."' data-image></div><div class='card-content'><h3 class='card-heading'>";
