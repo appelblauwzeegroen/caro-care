@@ -38,7 +38,14 @@ function open_view_sites(){
 }
 add_shortcode('all_sites', 'get_sites_from_db');
 function get_sites_from_db(){
-    $sql = "SELECT * FROM Sites";
+    $searchTerm = $_GET['s'];
+    //if $searchTerm is empty, show all sites
+    if (empty($searchTerm)){
+        $sql = "SELECT * FROM Sites";
+    }else{
+        //filter on search term for s_name and s_location
+        $sql = "SELECT * FROM Sites WHERE s_name LIKE '%$searchTerm%' OR s_location LIKE '%$searchTerm%'";
+    }
     $result = run_query_on_mysql($sql);
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
