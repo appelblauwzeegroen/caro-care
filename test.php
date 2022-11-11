@@ -38,6 +38,7 @@ function open_view_sites(){
 }
 add_shortcode('all_sites', 'get_sites_from_db');
 function get_sites_from_db(){
+    echo 'hello website';
     $sql = "SELECT * FROM Sites";
     $result = run_query_on_mysql($sql);
     if ($result->num_rows > 0) {
