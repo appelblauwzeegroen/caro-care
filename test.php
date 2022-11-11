@@ -39,6 +39,7 @@ function open_view_sites(){
 add_shortcode('all_sites', 'get_sites_from_db');
 function get_sites_from_db(){
     $searchTerm = $_GET['search'];
+    $server = $_SERVER['SERVER_NAME'];
     //if $searchTerm is empty, show all sites
     if (empty($searchTerm)){
         $sql = "SELECT * FROM Sites";
@@ -49,10 +50,14 @@ function get_sites_from_db(){
     $result = run_query_on_mysql($sql);
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            $server = $_SERVER['SERVER_NAME'];
+            if($row["s_image_url"] == ""){
+                $imagelink = "http://carocareuat.kinsta.cloud/wp-content/uploads/2022/11/images-1.png";
+            }else{
+                $imagelink = $row["s_image_url"];
+            }
             $siteUrl = "http://".$server."/site/?s=" . $row["s_id"];
             $card_list_item = $card_list_item."<li class='card-list-item'> <a href='".$siteUrl."'><div class='card'><div class='card-image'><img alt= '' class='logos' src='";
-			$card_list_item = $card_list_item.$row["s_image_url"];
+			$card_list_item = $card_list_item.$imagelink;
 			$card_list_item = $card_list_item."' data-image></div><div class='card-content'><h3 class='card-heading'>";
 			$card_list_item = $card_list_item.$row["s_name"];
 			$card_list_item = $card_list_item."</h3><article>";
