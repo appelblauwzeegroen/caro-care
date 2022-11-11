@@ -1,0 +1,226 @@
+<html>
+
+<head>
+  <script src="https://kit.fontawesome.com/dd2d7c29f6.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300,200" rel="stylesheet" type="text/css">
+</head>
+<div class="container search-container">
+  <form class="searchform" action="/locaties" method="get">
+      <input class="searchbox" type="string" name="search" placeholder="naam locatie/gemeente/...">
+      <button class="searchbutton" type="submit" name=""><i class="fa-solid fa-magnifying-glass"></i></button>
+  </form>
+</div>
+<div class="container squeeze push--top">
+  <ul class="card-list">
+    <?php echo do_shortcode('[all_sites]')?>
+  </ul>
+</div>
+
+</html>
+<style>
+  .card-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .card-heading {
+    font-size: 16px !important;
+    color: #ffff !important;
+    margin-left: 5px;
+  }
+
+  .card-content>p {
+    font-size: 14px !important;
+    color: #ffff !important;
+    margin-left: 5px;
+  }
+
+  .card-list>li {
+    flex: 0;
+    /*Size*/
+    min-width: 350px;
+    min-height: 200px;
+    max-width: 350px;
+    max-height: 200px;
+
+    /*Border*/
+    border-radius: 8px;
+  }
+
+  .card {
+    margin: 5px;
+  }
+
+  article {
+    color: #ffff;
+    margin-top: 15px;
+  }
+
+  .card-heading {
+    position: absolute;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    z-index: 1 !important;
+    white-space: nowrap !important;
+  }
+
+  .card-content {
+    position: absolute;
+    margin-top: 125px;
+    z-index: 1 !important;
+    margin-left: 5px;
+  }
+
+  .fa-location-dot {
+    color: #ffff;
+  }
+
+  .logos {
+    width: 350px !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    margin: -5px;
+    position: absolute !important;
+    z-index: 0 !important;
+    opacity: 09;
+    border-radius: 8px !important;
+  }
+
+  img {
+    border-radius: 8px !important;
+  }
+
+  .card-list>li:hover {
+    box-shadow: 0 4px 8px 0 #00000080, 0 8px 25px 0 #00000080;
+    cursor: pointer;
+  }
+
+  a {
+    display: block;
+    color: #ffff;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .loader {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    border: 4px solid #Fff;
+    top: 50%;
+    animation: loader 2s infinite ease;
+  }
+
+  .loader-inner {
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+    background-color: #fff;
+    animation: loader-inner 2s infinite ease-in;
+  }
+
+  @keyframes loader {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    25% {
+      transform: rotate(180deg);
+    }
+
+    50% {
+      transform: rotate(180deg);
+    }
+
+    75% {
+      transform: rotate(360deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes loader-inner {
+    0% {
+      height: 0%;
+    }
+
+    25% {
+      height: 0%;
+    }
+
+    50% {
+      height: 100%;
+    }
+
+    75% {
+      height: 100%;
+    }
+
+    100% {
+      height: 0%;
+    }
+  }
+
+  .loader-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1000px;
+    background-color: #242f3f;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  .searchbutton{
+    background: none !important;
+    color: #323232 !important;
+    padding: 0;
+    font-size: 18px;
+    border: none;
+  }
+
+  .searchbutton:hover{
+    border:none;
+    color: black;
+  }
+
+  .searchbox{
+    border: thin;
+    border-style: solid;
+    border-color: #323232;
+    width: 96%;
+
+  }
+
+  .searchbox:focus{
+    border-width: thin !important;
+    border-color: black !important;
+  }
+
+  .searchform{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .search-container{
+    display:flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom:15px !important;
+  }
+
+  ::placeholder{
+    color: rgb(156, 156, 156);
+  }
+</style>
