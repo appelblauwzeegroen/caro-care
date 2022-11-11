@@ -69,6 +69,30 @@ function get_sites_from_db(){
     }
     return $card_list_item;
 }
+add_shortcode('site_details', 'get_site_details');
+function get_site_details(){
+    include "views/site_details.html";
+}
+add_shortcode('get_site_detail_title', 'get_base_site_info');
+function get_base_site_info(){
+    $siteID = $_GET('s');
+    if(empty($siteID)){
+        echo "No site selected";
+        return;
+    }else{
+        $sql = "SELECT * FROM Sites WHERE s_id = $siteID";
+        $result = run_query_on_mysql($sql);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $siteName = $row["s_name"];
+                $siteLocation = $row["s_location"];
+            }
+        } else {
+            echo "No results found";
+        }
+        return $siteName." - ".$siteLocation. "(".$siteID.")";
+    } 
+}
 
 function run_query_on_mysql($sql){
     $servername = "caro-uat-db-4xj75-mysql.external.kinsta.app:31110";
