@@ -89,7 +89,7 @@ function get_base_site_info(){
         } else {
             echo "No results found";
         }
-        return $siteName." - ".$siteLocation. "(".$siteID.")";
+        return $siteName." - ".$siteLocation. " (10.".$siteID.".x.x)";
     } 
 }
 
