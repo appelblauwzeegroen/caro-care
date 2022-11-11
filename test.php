@@ -11,7 +11,7 @@
 /* Your code goes below here. */
 
 add_shortcode( 'units_waregem', 'get_units_site_waregem' );
-function get_from_mysql_database(){
+function get_units_site_waregem(){
     $sql = "SELECT * FROM wp_posts WHERE post_type = 'unit' AND post_status = 'publish'";
     $result = run_query_on_mysql($sql);
     return $result;
