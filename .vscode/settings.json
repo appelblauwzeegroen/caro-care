@@ -1,0 +1,18 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "caro-uat-db-4xj75-mysql.external.kinsta.app",
+            "port": 31110,
+            "driver": "MySQL",
+            "name": "Caro Care UAT db",
+            "group": "CARO Care",
+            "database": "CARO_UAT_DB",
+            "username": "qCshgpeUbTJs6tQe",
+            "password": "4xfPjc0pemri6AQi"
+        }
+    ]
+}
