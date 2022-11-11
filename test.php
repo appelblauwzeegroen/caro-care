@@ -16,17 +16,17 @@ function get_units_site(){
     //if $site is empty, show error message: "No site selected" and stop function
 
     if (empty($site)){
-        echo "No site selected";
+        print_r("No site selected");
         return;
     }else{
         $sql = "SELECT * FROM Rooms WHERE r_s_id = $site";
         $result = run_query_on_mysql($sql);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                echo "id: " . $row["r_id"]. " - Name: " . $row["r_label"]. "<br>";
+                print_r("id: " . $row["r_id"]. " - Name: " . $row["r_label"]. "<br>");
             }
         } else {
-            echo "No results found for this site";
+            print_r("No results found for this site");
         }
         return $result;
     }
