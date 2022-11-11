@@ -23,12 +23,18 @@ function get_units_site(){
         $result = run_query_on_mysql($sql);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                print_r("id: " . $row["r_id"]. " - Name: " . $row["r_label"]. "<br>");
+                $card_list_item = $card_list_item."<li class='card-list-item'> <a href='".$siteUrl."'><div class='card'><div class='card-image'><img alt= '' class='logos' src='";
+                $card_list_item = $card_list_item.$imagelink;
+                $card_list_item = $card_list_item."' data-image></div><div class='card-content'><h3 class='card-heading'>";
+                $card_list_item = $card_list_item.$row["s_name"];
+                $card_list_item = $card_list_item."</h3><article>";
+                $card_list_item = $card_list_item."<i class='fa-solid fa-location-dot'></i> ".$row["s_location"];
+                $card_list_item = $card_list_item."</article></div></div></a></li>";
             }
         } else {
             print_r("No results found for this site");
         }
-        return $result;
+        return $card_list_item;
     }
 }
 add_shortcode('sites', 'open_view_sites');
