@@ -43,7 +43,7 @@ function get_sites_from_db(){
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             $server = $_SERVER['SERVER_NAME'];
-            $siteUrl = "http://$server/site/?s=" . $row["s_id"];
+            $siteUrl = "http://".$server."/site/?s=" . $row["s_id"];
             $card_list_item = $card_list_item."<li class='card-list-item'> <a href='".$siteUrl."'><div class='card'><div class='card-image'><img alt= '' class='logos' src='";
 			$card_list_item = $card_list_item.$row["s_image_url"];
 			$card_list_item = $card_list_item."' data-image></div><div class='card-content'><h3 class='card-heading'>";
