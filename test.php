@@ -68,7 +68,7 @@ function get_sites_from_db(){
     }
     return $card_list_item;
 }
-add_shortcode('site_details', 'get_site_details');
+add_shortcode('site_details_page', 'get_site_details');
 function get_site_details(){
     include "views/site_details.html";
 }
