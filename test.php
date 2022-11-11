@@ -13,6 +13,10 @@
 add_shortcode( 'units', 'get_units' );
 function get_units_site(){
     $site=$_GET['site'];
+    //if $site is empty, show error message: "No site selected"
+    if (empty($site)){
+        echo "No site selected";
+    }
     $sql = "SELECT * FROM Rooms WHERE r_s_id = '20'";
     $result = run_query_on_mysql($sql);
     if ($result->num_rows > 0) {
