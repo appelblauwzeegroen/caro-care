@@ -10,7 +10,7 @@
 
 /* Your code goes below here. */
 
-add_shortcode( 'units_site', 'get_units_site' );
+add_shortcode( 'units_site', 'get_units_site');
 function get_units_site(){
     $site=$_GET['site'];
     //if $site is empty, show error message: "No site selected"
