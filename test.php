@@ -31,7 +31,6 @@ function get_units_site(){
         return $result;
     }
 }
-
 add_shortcode('sites', 'open_view_sites');
 function open_view_sites(){
     include 'views/sites_overview.html';
