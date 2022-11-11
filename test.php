@@ -38,7 +38,7 @@ function open_view_sites(){
 }
 add_shortcode('all_sites', 'get_sites_from_db');
 function get_sites_from_db(){
-    $searchTerm = $_GET['s'];
+    $searchTerm = $_GET['search'];
     //if $searchTerm is empty, show all sites
     if (empty($searchTerm)){
         $sql = "SELECT * FROM Sites";
