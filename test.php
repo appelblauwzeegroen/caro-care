@@ -75,7 +75,7 @@ function get_site_details(){
 }
 add_shortcode('get_site_detail_title', 'get_base_site_info');
 function get_base_site_info(){
-    $siteID = $_GET('s');
+    $siteID = $_GET('sid');
     if(empty($siteID)){
         echo "No site selected";
         return;
