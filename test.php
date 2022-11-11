@@ -32,6 +32,10 @@ function get_units_site(){
     }
 }
 
+add_shortcode('sites', 'open_view_sites');
+function open_view_sites(){
+    include 'views/view_sites.php';
+}
 add_shortcode('all_sites', 'get_sites_from_db');
 function get_sites_from_db(){
     $sql = "SELECT * FROM Sites";
