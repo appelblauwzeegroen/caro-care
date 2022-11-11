@@ -12,7 +12,7 @@
 
 add_shortcode( 'units_site', 'get_units_site');
 function get_units_site(){
-    $site=$_GET['site'];
+    $site=$_GET['sid'];
     //if $site is empty, show error message: "No site selected" and stop function
 
     if (empty($site)){
