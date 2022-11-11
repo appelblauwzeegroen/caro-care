@@ -34,7 +34,7 @@ function get_units_site(){
 
 add_shortcode('sites', 'open_view_sites');
 function open_view_sites(){
-    include 'views/view_sites.php';
+    include 'views/sites_overwiew.html';
 }
 add_shortcode('all_sites', 'get_sites_from_db');
 function get_sites_from_db(){
